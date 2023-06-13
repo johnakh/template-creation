@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+metadata:
+  name: express-api-template
+  title: Express API Template
+  description: Create a new Express API for RDC.
+spec:
+  owner: microservices
+  type: service
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:cookiecutter
+      input:
+        url: ./template
+        values:
+          component_id: '{{cookiecutter.component_id}}'
+  parameters:
+    - title: Fill in the following information for your API
+      required:
+        - component_id
+      properties:
+        component_id:
+          title: Component ID
+          type: string
+          description: Unique name of the component
